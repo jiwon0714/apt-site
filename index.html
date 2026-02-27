@@ -9,18 +9,19 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   text-align: center;
+  padding-bottom: 80px;
 }
 
-/* 상단 텍스트 영역 */
 .section {
   padding: 30px 20px;
 }
 
-/* 16:9 이미지 박스 */
+/* 가로 50% 이미지 */
 .img-box {
-  width: 100%;
+  width: 50%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  margin: 20px auto;
 }
 
 .img-box img {
@@ -30,7 +31,6 @@ body {
   display: block;
 }
 
-/* 하단 고정 전화 버튼 */
 .fixed-call {
   position: fixed;
   bottom: 0;
@@ -43,11 +43,6 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
-
-/* 버튼 때문에 마지막 내용 가려지는 거 방지 */
-body {
-  padding-bottom: 80px;
-}
 </style>
 </head>
 
@@ -58,7 +53,6 @@ body {
   <p>모델하우스 방문 예약 및 분양 상담 가능</p>
 </div>
 
-<!-- 이미지들 -->
 <div class="img-box">
   <img src="https://picsum.photos/1200/800?1">
 </div>
@@ -67,19 +61,6 @@ body {
   <img src="https://picsum.photos/1200/800?2">
 </div>
 
-<div class="img-box">
-  <img src="https://picsum.photos/1200/800?3">
-</div>
-
-<div class="img-box">
-  <img src="https://picsum.photos/1200/800?4">
-</div>
-
-<div class="section">
-  <p>선착순 분양 진행 중</p>
-</div>
-
-<!-- 고정 전화 버튼 -->
 <a href="tel:01012345678" class="fixed-call">
 📞 지금 바로 전화 상담하기
 </a>
