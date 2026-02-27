@@ -8,12 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
+        /* [공통 설정] */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
             text-align: center;
-            padding-bottom: 80px;
+            padding-bottom: 90px;
         }
 
         /* [1. 명함 섹션] */
@@ -34,8 +35,8 @@
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
         .card-btn-call {
@@ -48,39 +49,48 @@
             border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
+            transition: 0.3s;
         }
 
-        /* [2. 타이틀 섹션] */
+        /* [2. 타이틀 & 강조 배너] */
         .main-title {
             background-color: #fff;
             padding: 40px 20px;
-            border-bottom: 2px solid #003a78;
         }
 
         .main-title h2 {
-            font-size: 26px;
+            font-size: 28px;
             color: #003a78;
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
         }
 
         .main-title p {
-            font-size: 15px;
+            font-size: 16px;
             color: #666;
-            margin-top: 8px;
+            margin-top: 10px;
+        }
+
+        .point-banner {
+            background: #003a78;
+            color: #fff;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: -0.5px;
         }
 
         /* [3. PC 환경: 명함 왼쪽 고정] */
         @media (min-width: 1024px) {
             .business-card {
                 position: fixed;
-                top: 100px;
+                top: 120px;
                 left: 40px;
                 width: 220px;
                 padding: 15px;
                 border: 2px solid #003a78;
-                border-radius: 15px;
-                box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+                border-radius: 20px;
+                box-shadow: 10px 10px 30px rgba(0,0,0,0.15);
                 z-index: 1000;
             }
             .card-container { max-width: 100%; }
@@ -101,7 +111,7 @@
             display: block;
         }
 
-        /* [5. 하단 고정 전화 버튼] */
+        /* [5. 하단 고정 버튼 - 중앙 정렬 수정] */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.03); }
@@ -120,16 +130,25 @@
             font-size: 20px;
             font-weight: bold;
             z-index: 9999;
-            animation: pulse 2s infinite ease-in-out;
+            text-align: center; /* 텍스트 중앙 */
+            display: block;
         }
 
+        /* PC에서 버튼 중앙 정렬 완벽 수정 */
         @media (min-width: 1024px) {
             .fixed-footer-call {
-                width: 350px;
+                width: 400px;
                 left: 50%;
-                transform: translateX(-50%);
+                margin-left: -200px; /* 너비의 절반만큼 왼쪽으로 밀어 정확히 중앙 배치 */
                 border-radius: 20px 20px 0 0;
+                animation: pulse-pc 2s infinite ease-in-out;
             }
+        }
+
+        @keyframes pulse-pc {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
@@ -148,6 +167,10 @@
         <p>모델하우스 방문 예약 및 선착순 분양 안내</p>
     </div>
 
+    <div class="point-banner">
+        🚀 잔여세대 선착순 동·호 지정 계약 중
+    </div>
+
     <div class="img-container">
         <img src="img/intro.png" alt="메인 홍보물">
         <img src="images/house2.jpg" alt="입지안내">
@@ -155,7 +178,7 @@
     </div>
 
     <a href="tel:01033230322" class="fixed-footer-call">
-        지금 바로 전화 상담하기
+        📞 지금 바로 전화 상담하기
     </a>
 
 </body>
