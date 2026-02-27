@@ -1,20 +1,61 @@
-<h1>김OO 상담 전용 페이지</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김OO 상담 전용</title>
 
-<img src="https://picsum.photos/600/400" />
-<img src="https://picsum.photos/600/401" />
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
-<h2>○○역 도보 3분 프리미엄 주거</h2>
-<p>모델하우스 방문 예약 및 분양 상담 가능</p>
+img {
+  width: 100%;
+  display: block;
+}
 
-<a href="tel:01012345678" 
-style="
-display:inline-block;
-padding:18px 30px;
-background:black;
-color:white;
-text-decoration:none;
-font-size:18px;
-margin:20px 0;
-border-radius:8px;">
-📞 전화 상담하기
+.section {
+  padding: 30px 20px;
+}
+
+.fixed-call {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  color: white;
+  text-decoration: none;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+  <h2>○○역 도보 3분 프리미엄 단지</h2>
+  <p>모델하우스 방문 예약 및 분양 상담 가능</p>
+</div>
+
+<!-- 사진 세로 나열 -->
+<img src="https://picsum.photos/800/1000?1">
+<img src="https://picsum.photos/800/1000?2">
+<img src="https://picsum.photos/800/1000?3">
+<img src="https://picsum.photos/800/1000?4">
+
+<div class="section">
+  <p>선착순 분양 진행 중</p>
+</div>
+
+<!-- 하단 고정 전화 버튼 -->
+<a href="tel:01012345678" class="fixed-call">
+📞 지금 바로 전화 상담하기
 </a>
+
+</body>
+</html>
