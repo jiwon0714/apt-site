@@ -56,3 +56,107 @@
             padding: 40px 20px;
             border-bottom: 2px solid #003a78;
         }
+
+        .main-title h2 {
+            font-size: 26px;
+            color: #003a78;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .main-title p {
+            font-size: 15px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* [3. PC 환경: 명함 왼쪽 고정] */
+        @media (min-width: 1024px) {
+            .business-card {
+                position: fixed;
+                top: 100px;
+                left: 40px;
+                width: 220px;
+                padding: 15px;
+                border: 2px solid #003a78;
+                border-radius: 15px;
+                box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            .card-container { max-width: 100%; }
+        }
+
+        /* [4. 메인 이미지 섹션] */
+        .img-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            line-height: 0;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* [5. 하단 고정 전화 버튼] */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .fixed-footer-call {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #003a78, #0056b3);
+            color: #fff;
+            text-decoration: none;
+            padding: 22px;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 9999;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @media (min-width: 1024px) {
+            .fixed-footer-call {
+                width: 350px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 20px 20px 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="business-card">
+        <div class="card-container">
+            <img src="img/profile.jpg" alt="분양상담사 명함">
+            <a href="tel:01033230322" class="card-btn-call">📞 상담 바로 연결</a>
+        </div>
+    </div>
+
+    <div class="main-title">
+        <h2>북오산자이 리버블시티</h2>
+        <p>모델하우스 방문 예약 및 선착순 분양 안내</p>
+    </div>
+
+    <div class="img-container">
+        <img src="img/intro.png" alt="메인 홍보물">
+        <img src="images/house2.jpg" alt="입지안내">
+        <img src="images/house3.jpg" alt="단지안내">
+    </div>
+
+    <a href="tel:01033230322" class="fixed-footer-call">
+        지금 바로 전화 상담하기
+    </a>
+
+</body>
+</html>
