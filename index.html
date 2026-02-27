@@ -16,17 +16,17 @@
             padding-bottom: 80px;
         }
 
-        /* [명함 섹션] */
+        /* [1. 명함 섹션] */
         .business-card {
             width: 100%;
             background: #fff;
             padding: 30px 20px;
-            border-bottom: 2px solid #003a78;
+            border-bottom: 1px solid #eee;
         }
 
         .card-container {
             width: 100%;
-            max-width: 280px; /* 명함 이미지 적정 너비 */
+            max-width: 280px;
             margin: 0 auto;
         }
 
@@ -34,7 +34,7 @@
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 10px; /* 모서리 살짝 둥글게 */
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
@@ -50,88 +50,9 @@
             font-weight: bold;
         }
 
-        /* [PC 환경: 명함 왼쪽 고정] */
-        @media (min-width: 1024px) {
-            .business-card {
-                position: fixed;
-                top: 100px;
-                left: 40px;
-                width: 220px;
-                padding: 15px;
-                border: 2px solid #003a78;
-                border-radius: 15px;
-                box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
-                z-index: 1000;
-            }
-            .card-container { max-width: 100%; }
+        /* [2. 타이틀 섹션] */
+        .main-title {
+            background-color: #fff;
+            padding: 40px 20px;
+            border-bottom: 2px solid #003a78;
         }
-
-        /* [메인 이미지 섹션] */
-        .img-container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            background: #fff;
-            line-height: 0;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* [하단 고정 전화 버튼] */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-
-        .fixed-footer-call {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(90deg, #003a78, #0056b3);
-            color: #fff;
-            text-decoration: none;
-            padding: 22px;
-            font-size: 20px;
-            font-weight: bold;
-            z-index: 9999;
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        @media (min-width: 1024px) {
-            .fixed-footer-call {
-                width: 350px;
-                left: 50%;
-                transform: translateX(-50%);
-                border-radius: 20px 20px 0 0;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="business-card">
-        <div class="card-container">
-            <img src="img/profile.jpg" alt="분양상담사 명함">
-            <a href="tel:01033230322" class="card-btn-call">📞 상담 바로 연결</a>
-        </div>
-    </div>
-
-    <div class="img-container">
-        <img src="img/intro.png" alt="메인 홍보물">
-        <img src="images/house2.jpg" alt="입지안내">
-        <img src="images/house3.jpg" alt="단지안내">
-    </div>
-
-    <a href="tel:01033230322" class="fixed-footer-call">
-        지금 바로 전화 상담하기
-    </a>
-
-</body>
-</html>
