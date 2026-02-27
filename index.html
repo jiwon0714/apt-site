@@ -16,7 +16,7 @@ body {
   padding: 30px 20px;
 }
 
-/* 가로 50% 이미지 */
+/* 기본: PC에서는 50% */
 .img-box {
   width: 50%;
   aspect-ratio: 16 / 9;
@@ -31,6 +31,14 @@ body {
   display: block;
 }
 
+/* 모바일에서는 100% */
+@media (max-width: 768px) {
+  .img-box {
+    width: 100%;
+  }
+}
+
+/* 하단 고정 전화 버튼 */
 .fixed-call {
   position: fixed;
   bottom: 0;
@@ -54,11 +62,19 @@ body {
 </div>
 
 <div class="img-box">
-  <img src="https://picsum.photos/1200/800?1">
+  <img src="images/house1.jpg">
 </div>
 
 <div class="img-box">
-  <img src="https://picsum.photos/1200/800?2">
+  <img src="images/house2.jpg">
+</div>
+
+<div class="img-box">
+  <img src="images/house3.jpg">
+</div>
+
+<div class="section">
+  <p>선착순 분양 진행 중</p>
 </div>
 
 <a href="tel:01012345678" class="fixed-call">
