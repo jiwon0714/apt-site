@@ -200,23 +200,31 @@
             tabcontent[i].style.display = "none";
         }
 
-        // 2. 모든 버튼 비활성화
+        // 2. 모든 버튼 비활성화 (active 클래스 제거)
         tablinks = document.getElementsByClassName("tab-btn");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].classList.remove("active");
         }
 
-        // 3. 선택한 탭 보이기
+        // 3. 선택한 탭 보여주기
         const selectedTab = document.getElementById(tabName);
         selectedTab.style.display = "block";
         
-        // 4. 버튼 활성화
+        // 4. 클릭한 버튼에 active 클래스 추가 (색상 변경)
         evt.currentTarget.classList.add("active");
 
-        // 5. [강력 수정] 탭 메뉴가 화면 맨 위로 오게 스크롤
-        // 탭 메뉴 자체를 찾아서 화면 상단으로 부드럽게 붙입니다.
+        /* -----------------------------------------------------------
+           5. [핵심] 다른 탭 클릭 시 화면을 탭 메뉴 위치로 강제 이동
+        ----------------------------------------------------------- */
         const menu = document.querySelector('.tab-menu');
-        menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // 메뉴의 절대 위치(Y좌표)를 계산해서 그곳으로 화면을 보냅니다.
+        const menuTop = menu.getBoundingClientRect().top + window.pageYOffset;
+        
+        window.scrollTo({
+            top: menuTop,
+            behavior: 'auto' // 'smooth'보다 'auto'가 즉시 이동해서 더 정확합니다.
+        });
     }
 </script>
 
