@@ -191,31 +191,37 @@
     </a>
 
     <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            
-            // 모든 콘텐츠 숨기기
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-                tabcontent[i].classList.remove("active");
-            }
-
-            // 모든 버튼 활성화 해제
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // 선택된 탭 보여주기
-            document.getElementById(tabName).style.display = "block";
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.className += " active";
-
-            // 탭 클릭 시 상단으로 이동 (옵션)
-            window.scrollTo({top: document.querySelector('.tab-menu').offsetTop, behavior: 'smooth'});
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        
+        // 1. 모든 탭 내용 숨기기
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
         }
-    </script>
+
+        // 2. 모든 버튼 비활성화
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // 3. 선택한 탭 보이기
+        const activeTab = document.getElementById(tabName);
+        activeTab.style.display = "block";
+        activeTab.classList.add("active");
+        evt.currentTarget.className += " active";
+
+        // 4. [핵심] 탭 메뉴 위치로 화면 올리기
+        // 탭 메뉴가 화면 상단에 딱 붙도록 위치를 계산해서 이동합니다.
+        const menuLocation = document.querySelector('.tab-menu').offsetTop;
+        window.scrollTo({
+            top: menuLocation, 
+            behavior: 'smooth' /* 부드럽게 이동 */
+        });
+    }
+</script>
 
 </body>
 </html>
