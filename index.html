@@ -54,7 +54,7 @@
         .sub-tab-content { display: none; }
         .sub-tab-content.active { display: block; }
 
-             /* [PC 환경 전용] */
+             /* [PC 환경 전용]
 
         @media (min-width: 1024px) {
 
@@ -64,6 +64,26 @@
 
             .fixed-footer-call { width: 400px; left: 50%; margin-left: -200px; border-radius: 20px 20px 0 0; }
 
+        }  */
+
+                /* [PC 환경 전용] */
+        @media (min-width: 1024px) {
+            .business-card { 
+                position: fixed; top: 50%; left: 40px; transform: translateY(-50%); 
+                width: 320px; border: 2px solid #003a78; border-radius: 20px; 
+                z-index: 1100; box-shadow: 10px 10px 30px rgba(0,0,0,0.15); 
+            }
+        
+            .tab-btn { font-size: 16px; }
+        
+            .fixed-footer-call { 
+                width: 100%;             /* 1. 일단 가로를 꽉 채우고 */
+                max-width: 500px;        /* 2. 최대 길이를 제한 (원하시는 너비로 조절 가능) */
+                left: 50%;               /* 3. 화면 왼쪽에서 50% 지점으로 이동 */
+                transform: translateX(-50%); /* 4. 자기 자신의 너비 절반만큼 왼쪽으로 밀어서 정중앙 맞춤 */
+                margin-left: 0;          /* 5. 기존의 margin-left는 0으로 초기화 */
+                border-radius: 20px 20px 0 0; 
+            }
         }
 
 
