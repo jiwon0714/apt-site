@@ -11,7 +11,7 @@
     <style>
         /* [공통 설정] */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8f9fa; text-align: center; padding-bottom: 100px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8f9fa; text-align: center; padding-bottom: 120px; }
         img { width: 100%; height: auto; display: block; vertical-align: middle; }
 
         /* [1. 명함 섹션] */
@@ -35,7 +35,7 @@
         .tab-content { display: none; width: 100%; max-width: 1100px; margin: 0 auto; background: #fff; }
         .tab-content.active { display: block; }
 
-        /* [5. 세대안내 내부 스타일 (중첩 구조)] */
+        /* [5. 세대안내 내부 스타일] */
         .view-mode-selector { display: flex; background: #eee; margin: 15px; border-radius: 8px; padding: 5px; }
         .mode-btn { flex: 1; padding: 12px; border: none; background: none; font-weight: bold; color: #888; cursor: pointer; border-radius: 6px; }
         .mode-btn.active { background: #fff; color: #003a78; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
@@ -54,21 +54,30 @@
         .sub-tab-content { display: none; }
         .sub-tab-content.active { display: block; }
 
-             /* [PC 환경 전용]
+        /* [6. 하단 고정 버튼 - 알약 모양] */
+        .fixed-footer-call {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            min-width: 280px;
+            background: linear-gradient(90deg, #003a78, #0056b3);
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 9999;
+            text-align: center;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+        }
 
+        /* [PC 환경 전용 수정] */
         @media (min-width: 1024px) {
-
-            .business-card { position: fixed; top: 50%; left: 40px; transform: translateY(-50%); width: 320px; border: 2px solid #003a78; border-radius: 20px; z-index: 1100; box-shadow: 10px 10px 30px rgba(0,0,0,0.15); }
-
-            .tab-btn { font-size: 16px; }
-
-            .fixed-footer-call { width: 400px; left: 50%; margin-left: -200px; border-radius: 20px 20px 0 0; }
-
-        }  */
-
-                      /* [PC 환경 전용] */
-        @media (min-width: 1024px) {
-            /* 명함 설정 (기존 유지) */
+            /* 명함은 왼쪽 고정 (기존 유지) */
             .business-card { 
                 position: fixed; top: 50%; left: 40px; transform: translateY(-50%); 
                 width: 320px; border: 2px solid #003a78; border-radius: 20px; 
@@ -77,26 +86,25 @@
         
             .tab-btn { font-size: 16px; }
         
-            /* 하단 버튼 정렬: 이 방식으로 교체하세요 */
+            /* 하단 버튼을 오른쪽 아래로 이동 */
             .fixed-footer-call { 
-                width: 500px;           /* 버튼의 가로 길이를 직접 지정 */
-                left: 0;                /* 초기화 */
-                right: 0;               /* 초기화 */
-                margin: 0 auto;         /* 좌우 마진을 auto로 주어 중앙 정렬 */
-                bottom: 0;              /* 바닥에 밀착 */
-                position: fixed;        /* 고정 위치 유지 */
-                transform: none;        /* 기존 transform 설정 초기화 */
-                border-radius: 20px 20px 0 0; 
-                text-align: center;
-                display: block;         /* 박스 모델 유지 */
+                bottom: 40px;           /* 바닥에서 띄움 */
+                right: 40px;            /* 오른쪽에서 40px 띄움 */
+                left: auto;             /* 기존 왼쪽 정렬 해제 */
+                transform: none;        /* 기존 중앙 정렬 해제 */
+                width: auto;            /* 너비 자동 */
+                min-width: 250px;       /* 적당한 너비 유지 */
+                font-size: 20px; 
+                padding: 16px 35px;
+                border-radius: 50px;    /* 둥근 버튼 유지 */
+            }
+        
+            /* 마우스 올렸을 때 살짝 위로 뜨는 효과 */
+            .fixed-footer-call:hover { 
+                transform: translateY(-5px); 
+                box-shadow: 0 15px 35px rgba(0,0,0,0.4); 
             }
         }
-
-
-
-        /* 하단 고정 버튼 */
-
-        .fixed-footer-call { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(90deg, #003a78, #0056b3); color: #fff; text-decoration: none; padding: 22px; font-size: 20px; font-weight: bold; z-index: 9999; }
     </style>
 </head>
 <body>
@@ -127,12 +135,10 @@
         <img src="img/intro.png" alt="사업개요">
         <img src="img/2.png" alt="사업개요 상세">
     </div>
-
     <div id="tab2" class="tab-content">
         <img src="img/5.png" alt="입지안내">
         <img src="img/10.png" alt="교통망">
     </div>
-
     <div id="tab3" class="tab-content">
         <img src="img/11.png" alt="프리미엄1">
         <img src="img/13.png" alt="프리미엄2">
@@ -153,36 +159,11 @@
                 <button class="filter-btn" onclick="filterSize(event, 'size127')">127㎡</button>
             </div>
 
-            <div id="size59" class="type-group active">
-                <div class="sub-tab-menu">
-                    <button class="sub-tab-btn active" onclick="openSubTab(event, 'type59A')">59A</button>
-                </div>
-            </div>
-            <div id="size74" class="type-group">
-                <div class="sub-tab-menu">
-                    <button class="sub-tab-btn" onclick="openSubTab(event, 'type74A')">74A</button>
-                    <button class="sub-tab-btn" onclick="openSubTab(event, 'type74B')">74B</button>
-                    <button class="sub-tab-btn" onclick="openSubTab(event, 'type74C')">74C</button>
-                </div>
-            </div>
-            <div id="size84" class="type-group">
-                <div class="sub-tab-menu">
-                    <button class="sub-tab-btn" onclick="openSubTab(event, 'type84A')">84A</button>
-                    <button class="sub-tab-btn" onclick="openSubTab(event, 'type84B')">84B</button>
-                </div>
-            </div>
-            
-            <div id="size99" class="type-group">
-                <div class="sub-tab-menu">
-                    <button class="sub-tab-btn" onclick="openSubTab(event, 'type99B')">99B</button>
-                </div>
-            </div>
-            
-            <div id="size127" class="type-group">
-                <div class="sub-tab-menu">
-                    <button class="sub-tab-btn" onclick="openSubTab(event, 'type127P')">127P</button>
-                </div>
-            </div>
+            <div id="size59" class="type-group active"><div class="sub-tab-menu"><button class="sub-tab-btn active" onclick="openSubTab(event, 'type59A')">59A</button></div></div>
+            <div id="size74" class="type-group"><div class="sub-tab-menu"><button class="sub-tab-btn" onclick="openSubTab(event, 'type74A')">74A</button><button class="sub-tab-btn" onclick="openSubTab(event, 'type74B')">74B</button><button class="sub-tab-btn" onclick="openSubTab(event, 'type74C')">74C</button></div></div>
+            <div id="size84" class="type-group"><div class="sub-tab-menu"><button class="sub-tab-btn" onclick="openSubTab(event, 'type84A')">84A</button><button class="sub-tab-btn" onclick="openSubTab(event, 'type84B')">84B</button></div></div>
+            <div id="size99" class="type-group"><div class="sub-tab-menu"><button class="sub-tab-btn" onclick="openSubTab(event, 'type99B')">99B</button></div></div>
+            <div id="size127" class="type-group"><div class="sub-tab-menu"><button class="sub-tab-btn" onclick="openSubTab(event, 'type127P')">127P</button></div></div>
 
             <div id="type59A" class="sub-tab-content active"><img src="img/34.png" alt="59A"></div>
             <div id="type74A" class="sub-tab-content"><img src="img/39.png" alt="74A"></div>
@@ -195,51 +176,32 @@
         </div>
 
         <div id="photo-view" class="mode-content">
-            <img src="img/a.jpg" alt="실사진1">
-            <img src="img/b.jpg" alt="실사진2">
-            <img src="img/c.jpg" alt="실사진3">
-            <img src="img/d.jpg" alt="실사진4">
-            <img src="img/e.jpg" alt="실사진5">
-            <img src="img/f.jpg" alt="실사진6">
-            <img src="img/g.jpg" alt="실사진7">
-            <img src="img/h.jpg" alt="실사진8">
-            <img src="img/i.jpg" alt="실사진9">
-            <img src="img/j.jpg" alt="실사진10">
-            <img src="img/k.jpg" alt="실사진11">
-            <img src="img/l.jpg" alt="실사진12">
-            
-        </div>
+            <img src="img/a.jpg" alt="실사진"><img src="img/b.jpg" alt="실사진"><img src="img/c.jpg" alt="실사진">
+            </div>
     </div>
 
     <div id="tab5" class="tab-content">
         <img src="img/70.png" alt="분양가 안내">
     </div>
 
-    <a href="tel:01033230322" class="fixed-footer-call">📞 지금 바로 전화 상담하기</a>
+    <a href="tel:01033230322" class="fixed-footer-call">📞 010-3323-0322 상담 연결</a>
 
     <script>
-        // 메인 탭 전환 + 스크롤 최상단 소환
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
             tablinks = document.getElementsByClassName("tab-btn");
             for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
-
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.classList.add("active");
-
-            // 페이지 맨 위로 즉시 이동
             window.scrollTo(0, 0);
-            
-            // 탭 메뉴 위치로 정밀 이동
             setTimeout(function() {
                 const menu = document.querySelector('.tab-menu');
                 menu.scrollIntoView({ behavior: 'auto', block: 'start' });
             }, 50);
         }
 
-        // 평면도 vs 실사진 모드 전환
         function changeViewMode(evt, modeId) {
             const contents = document.getElementsByClassName('mode-content');
             for (let content of contents) { content.classList.remove('active'); }
@@ -249,28 +211,22 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // 평형 필터링
         function filterSize(evt, sizeId) {
             const groups = document.getElementsByClassName('type-group');
             for (let group of groups) { group.classList.remove('active'); }
             const filterBtns = document.getElementsByClassName('filter-btn');
             for (let btn of filterBtns) { btn.classList.remove('active'); }
-
             document.getElementById(sizeId).classList.add('active');
             evt.currentTarget.classList.add('active');
-            
-            // 해당 평형의 첫 번째 서브 타입 자동 클릭
             const firstSubBtn = document.getElementById(sizeId).querySelector('.sub-tab-btn');
             if(firstSubBtn) firstSubBtn.click();
         }
 
-        // 상세 타입 선택
         function openSubTab(evt, subTabName) {
             const subcontents = document.getElementsByClassName("sub-tab-content");
             for (let content of subcontents) { content.style.display = "none"; }
             const subbtns = document.getElementsByClassName("sub-tab-btn");
             for (let btn of subbtns) { btn.classList.remove("active"); }
-            
             document.getElementById(subTabName).style.display = "block";
             evt.currentTarget.classList.add("active");
         }
