@@ -92,15 +92,25 @@
         .tab-content.active { display: block; } /* 선택된 것만 표시 */
         .tab-content img { width: 100%; height: auto; display: block; }
 
-        /* PC 환경: 명함 고정 */
+        /* PC 환경: 명함 왼쪽 '수직 중앙' 고정 */
         @media (min-width: 1024px) {
             .business-card {
-                position: fixed; top: 120px; left: 40px; width: 320px;
-                border: 2px solid #003a78; border-radius: 20px; z-index: 1100;
+                position: fixed;
+                top: 50%;           /* 화면 위에서 50% 지점 */
+                left: 40px;         /* 왼쪽 여백 */
+                transform: translateY(-50%); /* 명함 높이의 절반만큼 위로 올려 완벽한 중앙 정렬 */
+                width: 320px;
+                padding: 15px;
+                border: 2px solid #003a78;
+                border-radius: 20px;
+                box-shadow: 10px 10px 30px rgba(0,0,0,0.15);
+                z-index: 1100;
+                background: #fff;   /* 배경색 확실히 지정 */
             }
-            .tab-btn { font-size: 16px; }
-        }
-
+            
+    .card-container { max-width: 100%; }
+    .tab-btn { font-size: 16px; }
+}
         /* 하단 고정 버튼 */
         .fixed-footer-call {
             position: fixed; bottom: 0; left: 0; width: 100%;
