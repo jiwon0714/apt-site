@@ -54,16 +54,17 @@
         .sub-tab-content { display: none; }
         .sub-tab-content.active { display: block; }
 
-            @media (min-width: 1024px) {
-    .fixed-footer-call {
-        width: 600px;           /* 너비를 적당히 키움 */
-        left: 50%;              /* 중앙 시작 */
-        transform: translateX(-50%); /* 정확한 중앙 정렬 */
-        bottom: 20px;           /* 바닥에서 살짝 띄움 */
-        border-radius: 50px;    /* 알약 모양으로 예쁘게 */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-}
+             /* [PC 환경 전용] */
+
+        @media (min-width: 1024px) {
+
+            .business-card { position: fixed; top: 50%; left: 40px; transform: translateY(-50%); width: 320px; border: 2px solid #003a78; border-radius: 20px; z-index: 1100; box-shadow: 10px 10px 30px rgba(0,0,0,0.15); }
+
+            .tab-btn { font-size: 16px; }
+
+            .fixed-footer-call { width: 400px; left: 50%; margin-left: -200px; border-radius: 20px 20px 0 0; }
+
+        }
 
 
 
