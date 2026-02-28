@@ -192,39 +192,32 @@
 
     <script>
     function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        
         // 1. 모든 탭 내용 숨기기
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
+        var tabcontent = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
 
-        // 2. 모든 버튼 비활성화 (active 클래스 제거)
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) {
+        // 2. 모든 버튼 비활성화
+        var tablinks = document.getElementsByClassName("tab-btn");
+        for (var i = 0; i < tablinks.length; i++) {
             tablinks[i].classList.remove("active");
         }
 
-        // 3. 선택한 탭 보여주기
-        const selectedTab = document.getElementById(tabName);
-        selectedTab.style.display = "block";
+        // 3. 선택한 탭 보이기
+        document.getElementById(tabName).style.display = "block";
         
-        // 4. 클릭한 버튼에 active 클래스 추가 (색상 변경)
+        // 4. 클릭한 버튼에 active 클래스 추가
         evt.currentTarget.classList.add("active");
 
         /* -----------------------------------------------------------
-           5. [핵심] 다른 탭 클릭 시 화면을 탭 메뉴 위치로 강제 이동
+           5. [핵심] 0.01초의 시간차를 두고 스크롤을 맨 위로 보냄
         ----------------------------------------------------------- */
-        const menu = document.querySelector('.tab-menu');
-        
-        // 메뉴의 절대 위치(Y좌표)를 계산해서 그곳으로 화면을 보냅니다.
-        const menuTop = menu.getBoundingClientRect().top + window.pageYOffset;
-        
-        window.scrollTo({
-            top: menuTop,
-            behavior: 'auto' // 'smooth'보다 'auto'가 즉시 이동해서 더 정확합니다.
-        });
+        setTimeout(function() {
+            const menu = document.querySelector('.tab-menu');
+            // 탭 메뉴가 화면의 맨 위(start)에 오도록 강제 이동
+            menu.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }, 10); 
     }
 </script>
 
