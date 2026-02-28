@@ -192,32 +192,41 @@
 
     <script>
     function openTab(evt, tabName) {
-        // 1. 모든 탭 내용 숨기기
+        // 1. 모든 사진 구역 숨기기
         var tabcontent = document.getElementsByClassName("tab-content");
         for (var i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
 
-        // 2. 모든 버튼 비활성화
+        // 2. 모든 버튼 비활성화 색상 빼기
         var tablinks = document.getElementsByClassName("tab-btn");
         for (var i = 0; i < tablinks.length; i++) {
             tablinks[i].classList.remove("active");
         }
 
-        // 3. 선택한 탭 보이기
+        // 3. 선택한 탭 사진 보여주기
         document.getElementById(tabName).style.display = "block";
         
-        // 4. 클릭한 버튼에 active 클래스 추가
+        // 4. 클릭한 버튼 강조 색상 넣기
         evt.currentTarget.classList.add("active");
 
         /* -----------------------------------------------------------
-           5. [핵심] 0.01초의 시간차를 두고 스크롤을 맨 위로 보냄
+           5. [최종 해결책] 무조건 페이지 맨 위로 먼저 튕겨 올리기
         ----------------------------------------------------------- */
+        // 페이지 전체 스크롤을 0(맨 위)으로 보냅니다.
+        window.scrollTo(0, 0);
+
+        // 6. 만약 탭 메뉴 위치로 조금 내리고 싶다면 아래 코드를 실행
+        // (명함이나 타이틀이 너무 길어서 탭 메뉴가 안 보일 때를 대비)
         setTimeout(function() {
             const menu = document.querySelector('.tab-menu');
-            // 탭 메뉴가 화면의 맨 위(start)에 오도록 강제 이동
-            menu.scrollIntoView({ behavior: 'auto', block: 'start' });
-        }, 10); 
+            const menuTop = menu.getBoundingClientRect().top + window.pageYOffset;
+            
+            window.scrollTo({
+                top: menuTop,
+                behavior: 'auto' 
+            });
+        }, 50); // 0.05초의 시간차를 줘서 브라우저가 위치를 잡게 함
     }
 </script>
 
