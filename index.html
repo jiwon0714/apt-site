@@ -198,28 +198,25 @@
         tabcontent = document.getElementsByClassName("tab-content");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
-            tabcontent[i].classList.remove("active");
         }
 
         // 2. 모든 버튼 비활성화
         tablinks = document.getElementsByClassName("tab-btn");
         for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            tablinks[i].classList.remove("active");
         }
 
         // 3. 선택한 탭 보이기
-        const activeTab = document.getElementById(tabName);
-        activeTab.style.display = "block";
-        activeTab.classList.add("active");
-        evt.currentTarget.className += " active";
+        const selectedTab = document.getElementById(tabName);
+        selectedTab.style.display = "block";
+        
+        // 4. 버튼 활성화
+        evt.currentTarget.classList.add("active");
 
-        // 4. [핵심] 탭 메뉴 위치로 화면 올리기
-        // 탭 메뉴가 화면 상단에 딱 붙도록 위치를 계산해서 이동합니다.
-        const menuLocation = document.querySelector('.tab-menu').offsetTop;
-        window.scrollTo({
-            top: menuLocation, 
-            behavior: 'smooth' /* 부드럽게 이동 */
-        });
+        // 5. [강력 수정] 탭 메뉴가 화면 맨 위로 오게 스크롤
+        // 탭 메뉴 자체를 찾아서 화면 상단으로 부드럽게 붙입니다.
+        const menu = document.querySelector('.tab-menu');
+        menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 </script>
 
