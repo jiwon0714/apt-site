@@ -66,8 +66,9 @@
 
         }  */
 
-                /* [PC 환경 전용] */
+                       /* [PC 환경 전용] */
         @media (min-width: 1024px) {
+            /* 명함 위치는 그대로 유지 */
             .business-card { 
                 position: fixed; top: 50%; left: 40px; transform: translateY(-50%); 
                 width: 320px; border: 2px solid #003a78; border-radius: 20px; 
@@ -76,13 +77,16 @@
         
             .tab-btn { font-size: 16px; }
         
+            /* 하단 버튼: margin-left를 삭제하고 아래 설정을 복사하세요 */
             .fixed-footer-call { 
-                width: 100%;             /* 1. 일단 가로를 꽉 채우고 */
-                max-width: 500px;        /* 2. 최대 길이를 제한 (원하시는 너비로 조절 가능) */
-                left: 50%;               /* 3. 화면 왼쪽에서 50% 지점으로 이동 */
-                transform: translateX(-50%); /* 4. 자기 자신의 너비 절반만큼 왼쪽으로 밀어서 정중앙 맞춤 */
-                margin-left: 0;          /* 5. 기존의 margin-left는 0으로 초기화 */
+                width: 100%;             /* 전체 대비 너비 설정 */
+                max-width: 600px;        /* PC에서 보기 좋은 적당한 너비 */
+                left: 50%;               /* 화면의 정가운데 지점으로 이동 */
+                transform: translateX(-50%); /* 버튼 자신의 너비 절반만큼 왼쪽으로 당겨서 완벽 중앙 정렬 */
+                margin-left: 0;          /* 기존에 있던 마진은 반드시 0으로 초기화 */
+                bottom: 0;               /* 바닥에 밀착 */
                 border-radius: 20px 20px 0 0; 
+                text-align: center;
             }
         }
 
