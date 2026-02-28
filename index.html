@@ -11,7 +11,7 @@
     <style>
         /* [공통 설정] */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8f9fa; text-align: center; padding-bottom: 0px; }
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8f9fa; text-align: center; padding-bottom: 120px; }
         img { width: 100%; height: auto; display: block; vertical-align: middle; }
 
         /* [1. 명함 섹션] */
@@ -77,6 +77,11 @@
 
         /* [PC 환경 전용 수정] */
         @media (min-width: 1024px) {
+            
+            body { 
+        padding-bottom: 0; /* PC에선 버튼이 본문을 가리지 않으므로 여백 제거 */
+    }
+            
             /* 명함은 왼쪽 고정 (기존 유지) */
             .business-card { 
                 position: fixed; top: 50%; left: 40px; transform: translateY(-50%); 
