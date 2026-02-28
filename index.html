@@ -54,36 +54,23 @@
         .sub-tab-content { display: none; }
         .sub-tab-content.active { display: block; }
 
-        /* [하단 고정 버튼 - 기본 모바일] */
-        .fixed-footer-call {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%; /* 모바일에서는 가로 꽉 차게 */
-            background: linear-gradient(90deg, #003a78, #0056b3);
-            color: #fff;
-            text-decoration: none;
-            padding: 15px; /* 패딩 살짝 조절 */
-            font-size: 18px; /* 글자 크기 조절 */
-            font-weight: bold;
-            z-index: 9999;
-            text-align: center;
-            display: block;
-            line-height: 1.4; /* 줄바꿈 간격 조절 */
+             /* [PC 환경 전용] */
+
+        @media (min-width: 1024px) {
+
+            .business-card { position: fixed; top: 50%; left: 40px; transform: translateY(-50%); width: 320px; border: 2px solid #003a78; border-radius: 20px; z-index: 1100; box-shadow: 10px 10px 30px rgba(0,0,0,0.15); }
+
+            .tab-btn { font-size: 16px; }
+
+            .fixed-footer-call { width: 400px; left: 50%; margin-left: -200px; border-radius: 20px 20px 0 0; }
+
         }
 
-        /* [PC 환경 전용 수정] */
-        @media (min-width: 1024px) {
-            .fixed-footer-call {
-                /* PC에서도 화면 하단 전체를 꽉 채우고 싶다면 아래 설정 유지 */
-                width: 100%; 
-                left: 0;
-                margin-left: 0;
-                border-radius: 0; /* 꽉 찰 때는 테두리 둥글기 제거가 깔끔합니다 */
-                font-size: 22px; /* PC에선 글자를 좀 더 크게 */
-                padding: 20px;
-            }
-        }
+
+
+        /* 하단 고정 버튼 */
+
+        .fixed-footer-call { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(90deg, #003a78, #0056b3); color: #fff; text-decoration: none; padding: 22px; font-size: 20px; font-weight: bold; z-index: 9999; }
     </style>
 </head>
 <body>
@@ -202,7 +189,7 @@
         <img src="img/70.png" alt="분양가 안내">
     </div>
 
-    <a href="tel:01033230322" class="fixed-footer-call">010-3323-0322<br>📞 지금 바로 전화 상담하기</a>
+    <a href="tel:01033230322" class="fixed-footer-call">📞 지금 바로 전화 상담하기</a>
 
     <script>
         // 메인 탭 전환 + 스크롤 최상단 소환
